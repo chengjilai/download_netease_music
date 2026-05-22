@@ -12,7 +12,8 @@ UA = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36"
 
 def curl(url, data=None, cookie=""):
     cmd = ["curl", "-s", "-4", "--connect-timeout", "5", "--max-time", "15",
-           "-H", f"User-Agent: {UA}"]
+           "-H", f"User-Agent: {UA}",
+           "-H", "Referer: https://music.163.com/"]
     if cookie:
         cmd += ["-H", f"Cookie: {cookie}"]
     if data:
@@ -41,8 +42,15 @@ if not cd:
     if not phone:
         sys.exit()
     print(f"Sending SMS to +86 {phone}...")
-    curl("http://music.163.com/api/sms/captcha/sent",
-         f"cellphone={phone}&ctcode=86")
+    resp = curl("https://music.163.com/api/sms/captcha/sent",
+                f"cellphone={phone}&ctcode=86")
+    try:
+        rj = json.loads(resp)
+        if rj.get("code") != 200:
+            msg = rj.get("message", "Unknown error")
+            print(f"SMS failed: {msg}"); sys.exit(1)
+    except json.JSONDecodeError:
+        print(f"SMS failed (invalid response): {resp[:200]}"); sys.exit(1)
     code = input("SMS code: ").strip()
     if not code:
         sys.exit()
