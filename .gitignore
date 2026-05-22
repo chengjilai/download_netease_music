@@ -11,7 +11,3 @@ annotated/
 # Native libs from:
 #   https://github.com/2061360308/MusicLibrary/releases
 lib/
-
-# core.py + common.py extracted from:
-#   https://github.com/2061360308/NeteaseCloudMusic_PythonSDK
-# (src/python/MusicLibrary/{core,common}.py — MIT licensed)
