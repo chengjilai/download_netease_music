@@ -1,0 +1,17 @@
+# Downloaded/generated — not committed
+*.mp3
+session.json
+uv.lock
+.venv/
+__pycache__/
+htmlcov/
+annotated/
+.coverage
+
+# Native libs from:
+#   https://github.com/2061360308/MusicLibrary/releases
+lib/
+
+# core.py + common.py extracted from:
+#   https://github.com/2061360308/NeteaseCloudMusic_PythonSDK
+# (src/python/MusicLibrary/{core,common}.py — MIT licensed)
