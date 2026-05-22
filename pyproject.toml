@@ -1,7 +1,7 @@
 [project]
 name = "neteasemusic"
 version = "0.1.0"
-description = "Add your description here"
+description = "download music from netease cloud music"
 requires-python = ">=3.14"
 dependencies = []
 
