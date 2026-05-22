@@ -18,11 +18,7 @@ class Response:
             data = json.loads(response_str)
         except json.JSONDecodeError:
             print("响应解析失败，使用默认值", response_str)
-            data = {
-                "headers": {},
-                "body": {},
-                "status": 500
-            }
+            data = {"headers": {}, "body": {}, "status": 500}
 
         headers = data.get("headers")
         body = data.get("body")

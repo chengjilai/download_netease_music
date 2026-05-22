@@ -8,6 +8,7 @@ from enum import Enum
 
 LIB_DIR = os.path.join(os.path.dirname(__file__), "lib")
 
+
 def get_lib_filename(base_name):
     """根据操作系统获取对应的动态库文件名"""
     if sys.platform == "win32":
@@ -16,6 +17,7 @@ def get_lib_filename(base_name):
         return f"lib{base_name}.dylib"
     else:  # Linux and other Unix-like systems
         return f"lib{base_name}.so"
+
 
 engine = CDLL(os.path.join(LIB_DIR, get_lib_filename("engine")))
 
@@ -103,7 +105,7 @@ def load_kugou():
 
         kugou.kugou_destroy.restype = c_int
         kugou.kugou_destroy.argtypes = []
-        
+
         kugou.get_kugou_context.restype = c_void_p
         kugou.get_kugou_context.argtypes = []
 
@@ -129,7 +131,7 @@ def load_ncm():
 
         ncm.ncm_destroy.restype = c_int
         ncm.ncm_destroy.argtypes = []
-        
+
         ncm.get_ncm_context.restype = c_void_p
         ncm.get_ncm_context.argtypes = []
 

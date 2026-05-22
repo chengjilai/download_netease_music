@@ -1,9 +1,14 @@
 """Minimal NCM API wrapper — 3 methods only."""
 
-import ctypes, json
+import ctypes
+import json
 
 from core import (
-    _Engine, _NcmProcessEnv, load_ncm, _NcmContextManager, engine,
+    _Engine,
+    _NcmProcessEnv,
+    load_ncm,
+    _NcmContextManager,
+    engine,
 )
 from common import to_bytes, Response
 
@@ -32,8 +37,7 @@ class NCM:
         self._cookie.update(d)
 
     def login_cellphone(self, phone, captcha):
-        return self._request("/login/cellphone",
-                             phone=phone, captcha=captcha)
+        return self._request("/login/cellphone", phone=phone, captcha=captcha)
 
     def song_url_v1(self, id, level="standard"):
         return self._request("/song/url/v1", id=id, level=level)
